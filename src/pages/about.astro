@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { defaultLang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+const t = useTranslations(defaultLang);
+---
+
+<BaseLayout title={t('nav.about')}>
+  <article class="prose">
+    <h1>{t('nav.about')}</h1>
+
+    <p>
+      안녕하세요. 만든 것과 배운 것을 여기에 기록합니다.
+    </p>
+
+    <h2>다루는 것</h2>
+    <ul>
+      <li>여기에 다루는 기술을 적습니다.</li>
+    </ul>
+
+    <h2>연락</h2>
+    <p>
+      <a href="https://github.com/HaDoKim">GitHub</a>
+    </p>
+  </article>
+</BaseLayout>

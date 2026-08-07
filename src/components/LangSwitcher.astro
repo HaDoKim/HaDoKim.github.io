@@ -1,0 +1,28 @@
+---
+import { languages } from '../i18n/ui';
+
+// 활성 언어가 하나뿐이면 아무것도 그리지 않는다.
+// ui.ts의 languages에 en을 추가하면 이 버튼이 자동으로 나타난다.
+const entries = Object.entries(languages);
+const show = entries.length > 1;
+---
+
+{
+  show && (
+    <nav class="langs">
+      {entries.map(([code, label]) => (
+        <a href={code === 'ko' ? '/' : `/${code}/`} hreflang={code}>
+          {label}
+        </a>
+      ))}
+    </nav>
+  )
+}
+
+<style>
+  .langs {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+  }
+</style>

@@ -1,0 +1,36 @@
+---
+import { defaultLang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+const t = useTranslations(defaultLang);
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="container inner">
+    <span class="muted">© {year} {t('site.title')}</span>
+    <nav>
+      <a href="https://github.com/HaDoKim">GitHub</a>
+      <a href="/rss.xml">{t('footer.rss')}</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  footer {
+    margin-top: 4rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  nav {
+    display: flex;
+    gap: 1rem;
+  }
+</style>

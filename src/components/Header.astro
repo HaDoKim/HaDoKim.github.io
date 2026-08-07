@@ -1,0 +1,67 @@
+---
+import { defaultLang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+import LangSwitcher from './LangSwitcher.astro';
+import ThemeToggle from './ThemeToggle.astro';
+
+const t = useTranslations(defaultLang);
+const path = Astro.url.pathname;
+
+const links = [
+  { href: '/about', key: 'nav.about' as const },
+  { href: '/projects', key: 'nav.projects' as const },
+  { href: '/blog', key: 'nav.blog' as const },
+];
+
+const isActive = (href: string) => path === href || path.startsWith(`${href}/`);
+---
+
+<header>
+  <div class="container bar">
+    <a class="brand" href="/">{t('site.title')}</a>
+    <nav>
+      {
+        links.map((link) => (
+          <a href={link.href} aria-current={isActive(link.href) ? 'page' : undefined}>
+            {t(link.key)}
+          </a>
+        ))
+      }
+      <LangSwitcher />
+      <ThemeToggle />
+    </nav>
+  </div>
+</header>
+
+<style>
+  header {
+    border-bottom: 1px solid var(--border);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .brand {
+    color: var(--fg);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.95rem;
+  }
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+  nav a:hover,
+  nav a[aria-current='page'] {
+    color: var(--fg);
+  }
+</style>

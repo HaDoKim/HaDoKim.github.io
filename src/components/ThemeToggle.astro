@@ -1,0 +1,40 @@
+---
+import { useTranslations } from '../i18n/utils';
+import { defaultLang } from '../i18n/ui';
+
+const t = useTranslations(defaultLang);
+---
+
+<button id="theme-toggle" type="button" aria-label={t('theme.toggle')}>
+  <span aria-hidden="true">◐</span>
+</button>
+
+<style>
+  button {
+    padding: 0.25rem 0.5rem;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--fg);
+    font-size: 0.9rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  button:hover {
+    background: var(--surface);
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('theme-toggle');
+  toggle?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const isDark =
+      root.dataset.theme === 'dark' ||
+      (!root.dataset.theme &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const next = isDark ? 'light' : 'dark';
+    root.dataset.theme = next;
+    localStorage.setItem('theme', next);
+  });
+</script>
