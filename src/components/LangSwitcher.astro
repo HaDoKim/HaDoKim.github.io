@@ -1,9 +1,12 @@
 ---
-import { languages } from '../i18n/ui';
+import { languages, liveLocales } from '../i18n/ui';
 
-// 활성 언어가 하나뿐이면 아무것도 그리지 않는다.
-// ui.ts의 languages에 en을 추가하면 이 버튼이 자동으로 나타난다.
-const entries = Object.entries(languages);
+// languages에 등록됐다고 해서 라우트가 존재한다는 보장은 없으므로,
+// liveLocales에 실제로 올라온 언어만 링크로 그린다.
+// 살아있는 언어가 하나뿐이면 아무것도 그리지 않는다.
+const entries = Object.entries(languages).filter(([code]) =>
+  liveLocales.includes(code as (typeof liveLocales)[number]),
+);
 const show = entries.length > 1;
 ---
 

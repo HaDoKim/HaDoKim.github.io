@@ -1,9 +1,24 @@
 export const defaultLang = 'ko' as const;
 
-/** 활성 언어. 여기에 en을 추가하면 언어 전환 버튼이 자동으로 나타난다. */
+/**
+ * 문자열 표에 등록된 언어(번역 라벨 포함). en 확장은 여기서 끝나지 않는다 —
+ * 여기에 항목을 추가하는 것은 "번역 문자열이 존재한다"는 뜻일 뿐, 사이트에
+ * 실제 언어가 생기는 것은 아니다. 새 언어를 살아있는 언어로 만들려면:
+ *   1. 이 languages 객체에 라벨 추가
+ *   2. astro.config.mjs의 i18n.locales에 등록
+ *   3. src/pages/en/ 이하에 실제 페이지 라우트 생성
+ *   4. 위 세 가지를 모두 마친 뒤에만 아래 liveLocales에 추가한다.
+ * liveLocales에 없는 언어는 LangSwitcher가 링크를 그리지 않는다.
+ */
 export const languages = {
   ko: '한국어',
 } as const;
+
+/**
+ * 실제로 라우트가 존재하는("살아있는") 언어만 나열한다.
+ * LangSwitcher는 languages 전체가 아니라 이 목록만 읽어 링크를 그린다.
+ */
+export const liveLocales: readonly (keyof typeof languages)[] = ['ko'];
 
 export const ui = {
   ko: {
