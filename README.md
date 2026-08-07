@@ -1,43 +1,50 @@
-# Astro Starter Kit: Minimal
+# hadokim.github.io
 
-```sh
-npm create astro@latest -- --template minimal
+개인 홈페이지. 포트폴리오와 블로그.
+
+- 공개 주소: https://hadokim.github.io
+- 설계 문서: `docs/superpowers/specs/2026-08-07-personal-homepage-design.md`
+
+## 로컬 실행
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 글 쓰기
 
-## 🚀 Project Structure
+`src/content/blog/ko/YYYY-MM-DD-slug.md` 파일을 만든다.
 
-Inside of your Astro project, you'll see the following folders and files:
+```markdown
+---
+title: "제목"
+description: "한 줄 요약"
+date: 2026-08-07
+tags: ["태그"]
+draft: false
+---
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+본문
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+- 주소는 `/blog/slug` 가 된다 (날짜 접두사는 주소에서 빠진다)
+- `draft: true` 면 공개 사이트에 나오지 않는다. `npm run dev` 에서는 보인다. 단, RSS(`/rss.xml`)는 `npm run dev` 를 포함해 항상 draft 글을 제외한다
+- slug 에는 소문자 영문·숫자·하이픈만 쓴다
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+프로젝트는 `src/content/projects/ko/slug.md` 에 같은 방식으로 쓴다.
+`featured: true` 를 주면 홈에 노출된다 (최신순 3개까지).
 
-Any static assets, like images, can be placed in the `public/` directory.
+## 배포
 
-## 🧞 Commands
+`main` 에 push 하면 GitHub Actions 가 빌드해 Pages 에 올린다. 2~3분 걸린다.
+빌드가 실패하면 배포되지 않는다.
 
-All commands are run from the root of the project, from a terminal:
+## 명령
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+| 명령 | 하는 일 |
+|---|---|
+| `npm run dev` | 로컬 개발 서버 |
+| `npm run build` | 타입 검사 후 정적 빌드 |
+| `npm run preview` | 빌드 결과 미리보기 |
+| `npm run test` | 순수 함수 테스트 |

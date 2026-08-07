@@ -19,6 +19,7 @@
 - **slug에는 소문자 영문·숫자·하이픈만 쓴다.**
 - **커밋 메시지는 Conventional Commits** (`feat:`, `chore:`, `fix:`, `docs:`).
 - **모든 커밋 전 `npm run build`가 통과해야 한다.**
+- **`getStaticPaths`는 `satisfies` 형태로 쓴다.** 즉 `export const getStaticPaths = (async () => { … }) satisfies GetStaticPaths;` 이고, `export const getStaticPaths: GetStaticPaths = async () => {}` 가 아니다. 콜론 주석을 쓰면 반환 타입이 넓어져 `Astro.props`가 `unknown`으로 무너지고 `astro check`가 오류를 낸다. Task 5에서 실제로 8개 오류로 확인된 사항이다.
 
 ## 스펙 대비 변경 사항
 
@@ -1149,10 +1150,10 @@ Run: `npm run dev`
 Run: `npm run build`
 Expected: 오류 없이 종료
 
-Run: `node -e "const s=require('fs').readFileSync('dist/about/index.html','utf8'); for (const k of ['og:title','canonical','rss.xml']) { if(!s.includes(k)) throw new Error('missing: '+k); } if(s.includes('langs')) throw new Error('lang switcher rendered but should be hidden with a single locale'); console.log('OK')"`
+Run: `node -e "const s=require('fs').readFileSync('dist/about/index.html','utf8'); for (const k of ['og:title','canonical','rss.xml']) { if(!s.includes(k)) throw new Error('missing: '+k); } if(s.includes('class=\"langs')) throw new Error('lang switcher rendered but should be hidden with a single locale'); console.log('OK')"`
 Expected: `OK`
 
-이 검사가 통과한다는 건 `LangSwitcher`가 실제로 아무것도 렌더하지 않았다는 뜻이다. `langs` 클래스는 그 컴포넌트에만 있으므로, 산출물에 나타나면 조건 분기가 잘못된 것이다.
+**검사 대상은 `class="langs` 이지 `langs` 가 아니다.** Astro는 컴포넌트가 렌더링을 건너뛰어도 그 컴포넌트의 스코프된 CSS를 산출물에 넣는다. 즉 `.langs[data-astro-cid-…]` 셀렉터는 항상 존재하므로, 맨 문자열 `langs`로 검사하면 언제나 실패하는 거짓 양성이 된다. 실제로 확인해야 하는 것은 그 클래스를 단 DOM 요소가 없다는 것이다.
 
 - [ ] **Step 10: 커밋**
 
@@ -1402,7 +1403,7 @@ import PostLayout from '../../layouts/PostLayout.astro';
 import { defaultLang } from '../../i18n/ui';
 import { byDateDesc, filterVisible, localeOf, slugOf } from '../../lib/content';
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths = (async () => {
   const all = await getCollection('blog');
   const posts = filterVisible(
     all.filter((entry) => localeOf(entry.id) === defaultLang),
@@ -1425,7 +1426,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       },
     };
   });
-};
+}) satisfies GetStaticPaths;
 
 const { post, prev, next } = Astro.props;
 const { Content } = await render(post);
@@ -1599,7 +1600,7 @@ import {
   slugOf,
 } from '../../../lib/content';
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths = (async () => {
   const all = await getCollection('blog');
   const posts = filterVisible(
     all.filter((entry) => localeOf(entry.id) === defaultLang),
@@ -1625,7 +1626,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       posts: posts.filter((post) => post.data.tags.includes(tag.name)),
     },
   }));
-};
+}) satisfies GetStaticPaths;
 
 const t = useTranslations(defaultLang);
 const { tag, tags, posts } = Astro.props;
@@ -1903,7 +1904,7 @@ import ProjectLayout from '../../layouts/ProjectLayout.astro';
 import { defaultLang } from '../../i18n/ui';
 import { filterVisible, localeOf, slugOf } from '../../lib/content';
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths = (async () => {
   const all = await getCollection('projects');
   const projects = filterVisible(
     all.filter((entry) => localeOf(entry.id) === defaultLang),
@@ -1914,7 +1915,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     params: { slug: slugOf(project.id) },
     props: { project },
   }));
-};
+}) satisfies GetStaticPaths;
 
 const { project } = Astro.props;
 const { Content } = await render(project);
@@ -2263,7 +2264,10 @@ git commit -m "feat: add 404 page, RSS feed and sitemap"
 - [ ] **Step 1: 전체 테스트와 빌드**
 
 Run: `npm run test`
-Expected: PASS — 15 tests passed (i18n 4개 + content 11개)
+Expected: PASS — **21개 통과** (i18n 4개 + content 17개)
+
+계획 최초 작성 시엔 15개였다. 이후 리뷰에서 나온 수정으로 6개가 늘었다 — `slugOf`/`localeOf`
+언어 폴더 가드 2개(Task 3), `tagCounts` 추출 4개(Task 6).
 
 Run: `npm run build`
 Expected: 오류 없이 종료
