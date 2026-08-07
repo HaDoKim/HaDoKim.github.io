@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { defaultLang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+const t = useTranslations(defaultLang);
+---
+
+<BaseLayout title={t('notfound.title')}>
+  <section>
+    <h1>404</h1>
+    <p>{t('notfound.title')}</p>
+    <p class="muted">{t('notfound.body')}</p>
+    <p class="links">
+      <a href="/">{t('notfound.home')}</a>
+      <a href="/blog">{t('notfound.blog')}</a>
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  section {
+    padding: 4rem 0;
+    text-align: center;
+  }
+  h1 {
+    margin: 0;
+    font-size: 3rem;
+  }
+  .links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+</style>
