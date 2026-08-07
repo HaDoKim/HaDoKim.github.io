@@ -13,6 +13,11 @@ describe('localeOf', () => {
     expect(localeOf('ko/2026-08-07-hello')).toBe('ko');
     expect(localeOf('en/2026-08-07-hello')).toBe('en');
   });
+
+  it('언어 폴더 구간이 없으면 던진다', () => {
+    expect(() => localeOf('foo')).toThrow();
+    expect(() => localeOf('no-slash')).toThrow();
+  });
 });
 
 describe('slugOf', () => {
@@ -30,6 +35,11 @@ describe('slugOf', () => {
 
   it('날짜처럼 보이는 문자열이 slug 중간에 있어도 건드리지 않는다', () => {
     expect(slugOf('ko/2026-08-07-retro-2025-01-01')).toBe('retro-2025-01-01');
+  });
+
+  it('언어 폴더 구간이 없으면 던진다', () => {
+    expect(() => slugOf('foo')).toThrow();
+    expect(() => slugOf('no-slash')).toThrow();
   });
 });
 

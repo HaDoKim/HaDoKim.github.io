@@ -5,13 +5,25 @@
 
 const DATE_PREFIX = /^\d{4}-\d{2}-\d{2}-/;
 
+/** id가 언어 폴더 구간을 가지고 있는지 검증한다. */
+function guardValidId(id: string): void {
+  const segments = id.split('/');
+  if (segments.length < 2) {
+    throw new Error(
+      `콘텐츠 id '${id}'에 언어 폴더 구간이 없습니다. 콘텐츠는 언어 폴더 아래에 위치해야 합니다 (예: ko/파일명).`,
+    );
+  }
+}
+
 /** id의 첫 구간(언어 폴더)을 돌려준다. */
 export function localeOf(id: string): string {
+  guardValidId(id);
   return id.split('/')[0];
 }
 
 /** URL에 쓰는 slug. 언어 폴더와 맨 앞 날짜 접두사를 제거한다. */
 export function slugOf(id: string): string {
+  guardValidId(id);
   const withoutLocale = id.split('/').slice(1).join('/');
   return withoutLocale.replace(DATE_PREFIX, '');
 }
