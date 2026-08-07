@@ -1,0 +1,106 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { defaultLang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+import { formatDate } from '../lib/content';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  tags: string[];
+  cover?: string;
+  prev?: { slug: string; title: string };
+  next?: { slug: string; title: string };
+}
+
+const t = useTranslations(defaultLang);
+const { title, description, date, tags, cover, prev, next } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} image={cover}>
+  <article class="prose">
+    <h1>{title}</h1>
+    <p class="muted meta">
+      <time datetime={date.toISOString()}>{formatDate(date)}</time>
+    </p>
+
+    {cover && <img src={cover} alt="" class="cover" />}
+
+    <slot />
+
+    {
+      tags.length > 0 && (
+        <nav class="tags" aria-label={t('post.tags')}>
+          {tags.map((tag) => (
+            <a href={`/blog/tags/${encodeURIComponent(tag)}`}>#{tag}</a>
+          ))}
+        </nav>
+      )
+    }
+  </article>
+
+  {
+    (prev || next) && (
+      <nav class="pager">
+        <div>
+          {prev && (
+            <a href={`/blog/${prev.slug}`}>
+              <span class="muted">{t('post.prev')}</span>
+              <span>{prev.title}</span>
+            </a>
+          )}
+        </div>
+        <div class="right">
+          {next && (
+            <a href={`/blog/${next.slug}`}>
+              <span class="muted">{t('post.next')}</span>
+              <span>{next.title}</span>
+            </a>
+          )}
+        </div>
+      </nav>
+    )
+  }
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-bottom: 0.25rem;
+    font-size: 1.75rem;
+    line-height: 1.35;
+  }
+  .meta {
+    margin-top: 0;
+    font-size: 0.9rem;
+  }
+  .cover {
+    width: 100%;
+    border-radius: 8px;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+  .pager {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+  }
+  .pager a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    text-decoration: none;
+  }
+  .right {
+    text-align: right;
+  }
+</style>

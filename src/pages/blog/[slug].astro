@@ -1,0 +1,47 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+import PostLayout from '../../layouts/PostLayout.astro';
+import { defaultLang } from '../../i18n/ui';
+import { byDateDesc, filterVisible, localeOf, slugOf } from '../../lib/content';
+
+export const getStaticPaths = (async () => {
+  const all = await getCollection('blog');
+  const posts = filterVisible(
+    all.filter((entry) => localeOf(entry.id) === defaultLang),
+    import.meta.env.DEV,
+  ).sort(byDateDesc);
+
+  return posts.map((post, index) => {
+    const newer = posts[index - 1];
+    const older = posts[index + 1];
+    return {
+      params: { slug: slugOf(post.id) },
+      props: {
+        post,
+        next: newer
+          ? { slug: slugOf(newer.id), title: newer.data.title }
+          : undefined,
+        prev: older
+          ? { slug: slugOf(older.id), title: older.data.title }
+          : undefined,
+      },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+const { post, prev, next } = Astro.props;
+const { Content } = await render(post);
+---
+
+<PostLayout
+  title={post.data.title}
+  description={post.data.description}
+  date={post.data.date}
+  tags={post.data.tags}
+  cover={post.data.cover}
+  prev={prev}
+  next={next}
+>
+  <Content />
+</PostLayout>

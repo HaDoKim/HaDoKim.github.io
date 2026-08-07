@@ -1,0 +1,48 @@
+---
+import { formatDate } from '../lib/content';
+
+interface Props {
+  slug: string;
+  title: string;
+  description: string;
+  date: Date;
+  tags: string[];
+}
+
+const { slug, title, description, date, tags } = Astro.props;
+---
+
+<article>
+  <h3><a href={`/blog/${slug}`}>{title}</a></h3>
+  <p class="muted desc">{description}</p>
+  <p class="muted meta">
+    <time datetime={date.toISOString()}>{formatDate(date)}</time>
+    {tags.length > 0 && <span>· {tags.map((tag) => `#${tag}`).join(' ')}</span>}
+  </p>
+</article>
+
+<style>
+  article {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.15rem;
+    line-height: 1.4;
+  }
+  h3 a {
+    color: var(--fg);
+    text-decoration: none;
+  }
+  h3 a:hover {
+    color: var(--accent);
+  }
+  .desc {
+    margin: 0 0 0.5rem;
+  }
+  .meta {
+    margin: 0;
+    font-size: 0.85rem;
+  }
+</style>
