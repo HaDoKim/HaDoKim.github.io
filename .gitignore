@@ -23,3 +23,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# SDD 진행 원장 (스크래치 작업공간)
+.superpowers/
