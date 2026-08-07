@@ -11,17 +11,156 @@ const t = useTranslations(defaultLang);
     <h1>{t('nav.about')}</h1>
 
     <p>
-      안녕하세요. 만든 것과 배운 것을 여기에 기록합니다.
+      검사 장비의 제어 소프트웨어를 만듭니다. 2004년부터 반도체·LED·디스플레이·이차전지
+      장비를 거치며 19년 남짓 이 일을 해 왔습니다.
+    </p>
+
+    <p>
+      장비를 실제로 움직이는 시퀀스와 UI부터, PLC·계측기와 주고받는 통신, 상위
+      시스템(MES·CIM·SPC+)으로 검사 결과를 올려보내는 인터페이스까지 맡아 왔습니다.
+      현장에서 오래 돌아가야 하는 소프트웨어라, 화려한 기능보다 <strong>멈추지 않는
+      것</strong>과 <strong>문제가 생겼을 때 원인을 찾을 수 있는 것</strong>을 중요하게
+      생각합니다.
     </p>
 
     <h2>다루는 것</h2>
-    <ul>
-      <li>여기에 다루는 기술을 적습니다.</li>
-    </ul>
+
+    <dl class="skills">
+      <dt>언어</dt>
+      <dd>Visual C++ / MFC (주력), C#</dd>
+
+      <dt>장비 제어</dt>
+      <dd>Motion, DIO, 장비 시퀀스 설계, 운영 UI</dd>
+
+      <dt>PLC 인터페이스</dt>
+      <dd>OMRON, Mitsubishi, SIEMENS</dd>
+
+      <dt>상위 시스템</dt>
+      <dd>MES, CIM, SPC+</dd>
+
+      <dt>통신 · 데이터</dt>
+      <dd>RS232, TCP/IP, MariaDB, JSON</dd>
+    </dl>
+
+    <h2>경력</h2>
+
+    <ol class="career">
+      <li>
+        <div class="row">
+          <strong>비전 검사 장비 기업</strong>
+          <span class="muted">2019.08 – 2025.01 · 5년 6개월</span>
+        </div>
+        <p>이차전지 검사 장비 제어 소프트웨어 개발. PLC 인터페이스, MES·CIM 연동.</p>
+      </li>
+
+      <li>
+        <div class="row">
+          <strong>산업 자동화 장비 기업</strong>
+          <span class="muted">2014.10 – 2018.10 · 4년 1개월</span>
+        </div>
+        <p>신뢰성 테스트 장비, 조립 장비, 바이오 장비 등 다양한 구동 장비의 제어 프로그램 개발.</p>
+      </li>
+
+      <li>
+        <div class="row">
+          <strong>비전 검사 장비 기업</strong>
+          <span class="muted">2012.08 – 2014.09 · 2년 2개월</span>
+        </div>
+        <p>디스플레이 모듈 외관 검사 장비 소프트웨어 개발. 장비 시퀀스·UI, CIM 연동.</p>
+      </li>
+
+      <li>
+        <div class="row">
+          <strong>반도체 · LED 테스트 장비 기업</strong>
+          <span class="muted">2006.09 – 2011.11 · 5년 3개월</span>
+        </div>
+        <p>LED Tester 및 Handler 제어 프로그램 개발. 측정·등급 분류 로직, MES 연동.</p>
+      </li>
+
+      <li>
+        <div class="row">
+          <strong>반도체 테스트 핸들러 기업</strong>
+          <span class="muted">2004.06 – 2006.07 · 2년 2개월</span>
+        </div>
+        <p>메모리 테스트 핸들러 전장 설계. Manipulator PLC 프로그램 유지보수.</p>
+      </li>
+    </ol>
+
+    <h2>학력</h2>
+
+    <p>
+      한밭대학교 제어계측공학과 졸업 <span class="muted">1997.03 – 2004.02</span>
+    </p>
 
     <h2>연락</h2>
+
     <p>
       <a href="https://github.com/HaDoKim">GitHub</a>
     </p>
   </article>
 </BaseLayout>
+
+<style>
+  .skills {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.15rem 1rem;
+    margin: 1rem 0 0;
+  }
+
+  .skills dt {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .skills dd {
+    margin: 0 0 0.75rem;
+  }
+
+  @media (min-width: 34rem) {
+    .skills {
+      grid-template-columns: 8rem 1fr;
+    }
+
+    .skills dt {
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .skills dd {
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  .career {
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .career li {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .career li:last-child {
+    border-bottom: none;
+  }
+
+  .career .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+  }
+
+  .career .row .muted {
+    font-size: 0.85rem;
+  }
+
+  .career p {
+    margin: 0.35rem 0 0;
+    color: var(--muted);
+  }
+</style>

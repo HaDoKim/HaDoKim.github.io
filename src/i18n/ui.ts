@@ -23,7 +23,8 @@ export const liveLocales: readonly (keyof typeof languages)[] = ['ko'];
 export const ui = {
   ko: {
     'site.title': 'IanKim',
-    'site.description': '만든 것과 배운 것을 기록하는 공간',
+    'site.description':
+      '검사 장비 제어 소프트웨어 개발자. 반도체·LED·이차전지 장비의 제어 프로그램과 PLC·MES 인터페이스를 만듭니다.',
 
     'nav.home': '홈',
     'nav.about': '소개',
