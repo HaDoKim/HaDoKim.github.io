@@ -44,6 +44,21 @@ export function byDateDesc(
   return b.data.date.getTime() - a.data.date.getTime();
 }
 
+/** 태그별 게시글 수를 센다. 개수 내림차순, 동률이면 이름 오름차순으로 정렬한다. */
+export function tagCounts<T extends { data: { tags: string[] } }>(
+  posts: T[],
+): { name: string; count: number }[] {
+  const counts = new Map<string, number>();
+  for (const post of posts) {
+    for (const tag of post.data.tags) {
+      counts.set(tag, (counts.get(tag) ?? 0) + 1);
+    }
+  }
+  return [...counts.entries()]
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+}
+
 /** 앞에서 n개만 취한다. */
 export function topN<T>(entries: T[], n: number): T[] {
   return entries.slice(0, n);

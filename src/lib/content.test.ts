@@ -5,6 +5,7 @@ import {
   formatDate,
   localeOf,
   slugOf,
+  tagCounts,
   topN,
 } from './content';
 
@@ -77,6 +78,42 @@ describe('topN', () => {
 
   it('개수가 모자라면 있는 만큼만 돌려준다', () => {
     expect(topN([1, 2], 3)).toEqual([1, 2]);
+  });
+});
+
+describe('tagCounts', () => {
+  it('여러 글에 걸쳐 태그별 개수를 센다', () => {
+    const posts = [
+      { data: { tags: ['웹', '회고'] } },
+      { data: { tags: ['웹'] } },
+    ];
+    expect(tagCounts(posts)).toEqual([
+      { name: '웹', count: 2 },
+      { name: '회고', count: 1 },
+    ]);
+  });
+
+  it('개수가 많은 태그가 앞으로 온다', () => {
+    const posts = [
+      { data: { tags: ['a'] } },
+      { data: { tags: ['b'] } },
+      { data: { tags: ['b'] } },
+      { data: { tags: ['b'] } },
+    ];
+    expect(tagCounts(posts).map((t) => t.name)).toEqual(['b', 'a']);
+  });
+
+  it('개수가 같으면 이름 오름차순으로 정렬한다', () => {
+    const posts = [
+      { data: { tags: ['다'] } },
+      { data: { tags: ['가'] } },
+      { data: { tags: ['나'] } },
+    ];
+    expect(tagCounts(posts).map((t) => t.name)).toEqual(['가', '나', '다']);
+  });
+
+  it('입력이 비어 있으면 빈 배열을 돌려준다', () => {
+    expect(tagCounts([])).toEqual([]);
   });
 });
 

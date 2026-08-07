@@ -5,7 +5,13 @@ import PostCard from '../../components/PostCard.astro';
 import TagList from '../../components/TagList.astro';
 import { defaultLang } from '../../i18n/ui';
 import { useTranslations } from '../../i18n/utils';
-import { byDateDesc, filterVisible, localeOf, slugOf } from '../../lib/content';
+import {
+  byDateDesc,
+  filterVisible,
+  localeOf,
+  slugOf,
+  tagCounts,
+} from '../../lib/content';
 
 const t = useTranslations(defaultLang);
 
@@ -15,15 +21,7 @@ const posts = filterVisible(
   import.meta.env.DEV,
 ).sort(byDateDesc);
 
-const tagCounts = new Map<string, number>();
-for (const post of posts) {
-  for (const tag of post.data.tags) {
-    tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
-  }
-}
-const tags = [...tagCounts.entries()]
-  .map(([name, count]) => ({ name, count }))
-  .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+const tags = tagCounts(posts);
 ---
 
 <BaseLayout title={t('nav.blog')}>
