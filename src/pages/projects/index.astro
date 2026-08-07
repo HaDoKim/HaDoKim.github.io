@@ -1,0 +1,61 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { defaultLang } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/utils';
+import { byDateDesc, filterVisible, localeOf, slugOf } from '../../lib/content';
+
+const t = useTranslations(defaultLang);
+
+const all = await getCollection('projects');
+const projects = filterVisible(
+  all.filter((entry) => localeOf(entry.id) === defaultLang),
+  import.meta.env.DEV,
+).sort(byDateDesc);
+
+const ordered = [
+  ...projects.filter((p) => p.data.featured),
+  ...projects.filter((p) => !p.data.featured),
+];
+---
+
+<BaseLayout title={t('nav.projects')}>
+  <h1>{t('nav.projects')}</h1>
+
+  {
+    ordered.length === 0 ? (
+      <p class="muted">{t('projects.empty')}</p>
+    ) : (
+      <div class="grid">
+        {ordered.map((project) => (
+          <ProjectCard
+            slug={slugOf(project.id)}
+            title={project.data.title}
+            description={project.data.description}
+            stack={project.data.stack}
+            cover={project.data.cover}
+            featured={project.data.featured}
+          />
+        ))}
+      </div>
+    )
+  }
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  @media (min-width: 40rem) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

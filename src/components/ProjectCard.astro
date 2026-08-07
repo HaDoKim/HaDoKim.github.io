@@ -1,0 +1,53 @@
+---
+interface Props {
+  slug: string;
+  title: string;
+  description: string;
+  stack: string[];
+  cover?: string;
+  featured: boolean;
+}
+
+const { slug, title, description, stack, cover } = Astro.props;
+---
+
+<article>
+  <a class="card" href={`/projects/${slug}`}>
+    {cover && <img src={cover} alt="" />}
+    <h3>{title}</h3>
+    <p class="muted">{description}</p>
+    <p class="stack muted">{stack.join(' · ')}</p>
+  </a>
+</article>
+
+<style>
+  .card {
+    display: block;
+    height: 100%;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--fg);
+    text-decoration: none;
+  }
+  .card:hover {
+    border-color: var(--accent);
+  }
+  img {
+    width: 100%;
+    margin-bottom: 0.75rem;
+    border-radius: 6px;
+  }
+  h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.05rem;
+  }
+  p {
+    margin: 0 0 0.35rem;
+    font-size: 0.9rem;
+  }
+  .stack {
+    font-size: 0.8rem;
+  }
+</style>

@@ -1,0 +1,35 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import { defaultLang } from '../../i18n/ui';
+import { filterVisible, localeOf, slugOf } from '../../lib/content';
+
+export const getStaticPaths = (async () => {
+  const all = await getCollection('projects');
+  const projects = filterVisible(
+    all.filter((entry) => localeOf(entry.id) === defaultLang),
+    import.meta.env.DEV,
+  );
+
+  return projects.map((project) => ({
+    params: { slug: slugOf(project.id) },
+    props: { project },
+  }));
+}) satisfies GetStaticPaths;
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<ProjectLayout
+  title={project.data.title}
+  description={project.data.description}
+  date={project.data.date}
+  stack={project.data.stack}
+  repo={project.data.repo}
+  demo={project.data.demo}
+  cover={project.data.cover}
+>
+  <Content />
+</ProjectLayout>

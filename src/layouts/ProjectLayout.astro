@@ -1,0 +1,74 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { defaultLang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  stack: string[];
+  repo?: string;
+  demo?: string;
+  cover?: string;
+}
+
+const t = useTranslations(defaultLang);
+const { title, description, stack, repo, demo, cover } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} image={cover}>
+  <article class="prose">
+    <h1>{title}</h1>
+    <p class="muted">{description}</p>
+
+    <dl class="meta">
+      <dt>{t('project.stack')}</dt>
+      <dd>{stack.join(' · ')}</dd>
+    </dl>
+
+    {
+      (repo || demo) && (
+        <nav class="links">
+          {repo && <a href={repo}>{t('project.repo')}</a>}
+          {demo && <a href={demo}>{t('project.demo')}</a>}
+        </nav>
+      )
+    }
+
+    {cover && <img src={cover} alt="" class="cover" />}
+
+    <slot />
+  </article>
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-bottom: 0.25rem;
+    font-size: 1.75rem;
+    line-height: 1.35;
+  }
+  .meta {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0 0;
+    font-size: 0.9rem;
+  }
+  .meta dt {
+    color: var(--muted);
+  }
+  .meta dd {
+    margin: 0;
+  }
+  .links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+  }
+  .cover {
+    width: 100%;
+    margin-top: 1.5rem;
+    border-radius: 8px;
+  }
+</style>
