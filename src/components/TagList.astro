@@ -1,4 +1,6 @@
 ---
+import { tagSlug } from '../lib/content';
+
 interface Props {
   tags: { name: string; count: number }[];
   active?: string;
@@ -12,7 +14,7 @@ const { tags, active } = Astro.props;
     <nav class="taglist">
       {tags.map((tag) => (
         <a
-          href={`/blog/tags/${encodeURIComponent(tag.name)}`}
+          href={`/blog/tags/${tagSlug(tag.name)}`}
           aria-current={tag.name === active ? 'page' : undefined}
         >
           #{tag.name} <span class="muted">{tag.count}</span>

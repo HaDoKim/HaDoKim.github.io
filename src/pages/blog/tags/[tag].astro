@@ -12,6 +12,7 @@ import {
   localeOf,
   slugOf,
   tagCounts,
+  tagSlug,
 } from '../../../lib/content';
 
 export const getStaticPaths = (async () => {
@@ -23,8 +24,21 @@ export const getStaticPaths = (async () => {
 
   const tags = tagCounts(posts);
 
+  // 서로 다른 태그가 같은 slug로 겹치면 한쪽 페이지가 조용히 사라진다. 빌드에서 막는다.
+  const seen = new Map<string, string>();
+  for (const tag of tags) {
+    const slug = tagSlug(tag.name);
+    const other = seen.get(slug);
+    if (other !== undefined && other !== tag.name) {
+      throw new Error(
+        `태그 "${tag.name}"와 "${other}"의 URL slug가 "${slug}"로 같습니다. 하나를 바꿔 주세요.`,
+      );
+    }
+    seen.set(slug, tag.name);
+  }
+
   return tags.map((tag) => ({
-    params: { tag: tag.name },
+    params: { tag: tagSlug(tag.name) },
     props: {
       tag: tag.name,
       tags,

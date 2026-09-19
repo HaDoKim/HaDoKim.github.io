@@ -3,6 +3,7 @@ import {
   byDateDesc,
   filterVisible,
   formatDate,
+  tagSlug,
   localeOf,
   slugOf,
   tagCounts,
@@ -120,5 +121,26 @@ describe('tagCounts', () => {
 describe('formatDate', () => {
   it('YYYY.MM.DD 형식으로 만든다', () => {
     expect(formatDate(new Date('2026-08-07T00:00:00Z'))).toBe('2026.08.07');
+  });
+});
+
+describe('tagSlug', () => {
+  it('#과 +는 URL에서 특수하므로 단어로 바꾼다', () => {
+    expect(tagSlug('C#')).toBe('csharp');
+    expect(tagSlug('C++')).toBe('cplusplus');
+  });
+
+  it('공백은 하이픈으로, 한글은 그대로 둔다', () => {
+    expect(tagSlug('장비 제어')).toBe('장비-제어');
+    expect(tagSlug('로깅')).toBe('로깅');
+  });
+
+  it('점 같은 기호는 떼어 낸다', () => {
+    expect(tagSlug('.NET')).toBe('net');
+    expect(tagSlug('Modbus RTU')).toBe('modbus-rtu');
+  });
+
+  it('앞뒤 공백과 연속 하이픈을 정리한다', () => {
+    expect(tagSlug('  a  /  b  ')).toBe('a-b');
   });
 });

@@ -71,3 +71,21 @@ export function formatDate(date: Date): string {
   const d = String(date.getUTCDate()).padStart(2, '0');
   return `${y}.${m}.${d}`;
 }
+
+/**
+ * 태그 이름을 URL 경로용 slug로 바꾼다.
+ *
+ * 태그는 화면 표시용 이름이라 `C#`, `장비 제어`처럼 자유롭게 쓰지만, 그대로 경로에 넣으면
+ * `#`은 프래그먼트로, `+`는 공백으로 읽혀 링크가 깨진다. 실제로 `C#` 태그가 404를 냈다.
+ * 한글은 경로에 그대로 둬도 안전하므로 유지하고, 라틴 문자만 소문자로 만든다.
+ */
+export function tagSlug(tag: string): string {
+  return tag
+    .trim()
+    .toLowerCase()
+    .replace(/#/g, 'sharp')
+    .replace(/\+/g, 'plus')
+    .replace(/[^\p{L}\p{N}-]+/gu, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
