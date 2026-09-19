@@ -98,6 +98,12 @@ pre {
   font-size: 1.15rem;
 }
 
+.prose > p > img {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
 .prose figure {
   margin: 2.5rem 0;
 }
