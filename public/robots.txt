@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
+Sitemap: https://hadokim.github.io/sitemap.xml
 Sitemap: https://hadokim.github.io/sitemap-index.xml
