@@ -25,33 +25,26 @@ EtherNet DIO로 다룹니다.
       <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" />
     </marker>
   </defs>
-
   <rect x="20" y="96" width="150" height="70" rx="6" fill="none" stroke="currentColor" />
   <text x="95" y="124" text-anchor="middle" font-size="13" fill="currentColor">MonitoringApp</text>
   <text x="95" y="143" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">WPF · MVVM</text>
-
   <line x1="170" y1="131" x2="216" y2="131" stroke="currentColor" marker-end="url(#ma-a)" />
-
   <rect x="220" y="86" width="180" height="90" rx="6" fill="none" style="stroke:var(--accent)" stroke-width="2" />
   <text x="310" y="110" text-anchor="middle" font-size="13" style="fill:var(--accent)">Monitoring.Core</text>
   <text x="310" y="132" text-anchor="middle" font-size="11" style="fill:var(--accent)">ITemperatureController</text>
   <text x="310" y="150" text-anchor="middle" font-size="11" style="fill:var(--accent)">IDioModule</text>
-
   <line x1="400" y1="110" x2="446" y2="62" stroke="currentColor" marker-end="url(#ma-a)" />
   <rect x="450" y="36" width="210" height="48" rx="6" fill="none" stroke="currentColor" opacity="0.85" />
   <text x="555" y="56" text-anchor="middle" font-size="13" fill="currentColor">ModbusRtuService</text>
   <text x="555" y="73" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">온도 컨트롤러 · 시리얼</text>
-
   <line x1="400" y1="131" x2="446" y2="131" stroke="currentColor" marker-end="url(#ma-a)" />
   <rect x="450" y="107" width="210" height="48" rx="6" fill="none" stroke="currentColor" opacity="0.85" />
   <text x="555" y="127" text-anchor="middle" font-size="13" fill="currentColor">FastechDioService</text>
   <text x="555" y="144" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">밸브 · 센서 · EtherNet</text>
-
   <line x1="400" y1="152" x2="446" y2="200" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ma-a)" />
   <rect x="450" y="178" width="210" height="48" rx="6" fill="none" stroke="currentColor" stroke-dasharray="4 3" opacity="0.7" />
   <text x="555" y="198" text-anchor="middle" font-size="13" fill="currentColor">시뮬레이션</text>
   <text x="555" y="215" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">장비 없을 때 자동 대체</text>
-
   <line x1="95" y1="212" x2="95" y2="172" stroke="currentColor" marker-end="url(#ma-a)" />
   <text x="106" y="196" font-size="11" fill="currentColor" opacity="0.7">터치 입력</text>
   <rect x="20" y="218" width="150" height="48" rx="6" fill="none" stroke="currentColor" opacity="0.65" />

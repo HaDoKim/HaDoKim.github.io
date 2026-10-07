@@ -16,36 +16,26 @@ draft: false
       <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" />
     </marker>
   </defs>
-
   <rect x="30" y="16" width="110" height="44" rx="6" fill="none" stroke="currentColor" opacity="0.65" />
   <text x="85" y="43" text-anchor="middle" font-size="13" fill="currentColor">비전 1</text>
-
   <rect x="160" y="16" width="110" height="44" rx="6" fill="none" stroke="currentColor" opacity="0.65" />
   <text x="215" y="43" text-anchor="middle" font-size="13" fill="currentColor">비전 2</text>
-
   <rect x="290" y="16" width="110" height="44" rx="6" fill="none" stroke="currentColor" opacity="0.65" />
   <text x="345" y="43" text-anchor="middle" font-size="13" fill="currentColor">비전 3</text>
-
   <line x1="85" y1="60" x2="85" y2="114" stroke="currentColor" marker-end="url(#ap-a)" />
   <line x1="215" y1="60" x2="215" y2="114" stroke="currentColor" marker-end="url(#ap-a)" />
   <line x1="345" y1="60" x2="345" y2="114" stroke="currentColor" marker-end="url(#ap-a)" />
   <text x="360" y="93" font-size="12" fill="currentColor" opacity="0.7">부분 판정</text>
-
   <rect x="30" y="120" width="370" height="52" rx="6" fill="none" stroke="currentColor" />
   <text x="215" y="151" text-anchor="middle" font-size="13" fill="currentColor">호스트 프로그램 — 최종 판정</text>
-
   <line x1="400" y1="146" x2="462" y2="146" stroke="currentColor" marker-end="url(#ap-a)" />
   <text x="431" y="136" text-anchor="middle" font-size="12" fill="currentColor" opacity="0.7">결과 보고</text>
-
   <rect x="470" y="120" width="180" height="52" rx="6" fill="none" stroke="currentColor" opacity="0.65" />
   <text x="560" y="151" text-anchor="middle" font-size="13" fill="currentColor">MES</text>
-
   <line x1="180" y1="172" x2="180" y2="222" stroke="currentColor" marker-end="url(#ap-a)" />
   <text x="172" y="200" text-anchor="end" font-size="12" fill="currentColor" opacity="0.7">불량 건</text>
-
   <line x1="250" y1="222" x2="250" y2="178" stroke="currentColor" marker-end="url(#ap-a)" />
   <text x="258" y="200" font-size="12" style="fill:var(--accent)">재판정</text>
-
   <rect x="125" y="228" width="180" height="48" rx="6" fill="none" style="stroke:var(--accent)" stroke-width="2" />
   <text x="215" y="257" text-anchor="middle" font-size="13" style="fill:var(--accent)">Review 프로그램</text>
 </svg>

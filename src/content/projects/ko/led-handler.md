@@ -17,36 +17,25 @@ Tester가 매긴 등급을 받아 실제로 칩을 옮기고 나누는 쪽을 �
       <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" />
     </marker>
   </defs>
-
   <rect x="400" y="20" width="130" height="44" rx="6" fill="none" stroke="currentColor" opacity="0.65" />
   <text x="465" y="47" text-anchor="middle" font-size="13" fill="currentColor">Tester</text>
-
   <rect x="20" y="108" width="90" height="48" rx="6" fill="none" stroke="currentColor" opacity="0.85" />
   <text x="65" y="137" text-anchor="middle" font-size="13" fill="currentColor">투입</text>
-
   <line x1="110" y1="132" x2="146" y2="132" stroke="currentColor" marker-end="url(#lh-a)" />
-
   <rect x="150" y="108" width="90" height="48" rx="6" fill="none" stroke="currentColor" opacity="0.85" />
   <text x="195" y="137" text-anchor="middle" font-size="13" fill="currentColor">이송</text>
-
   <line x1="240" y1="132" x2="276" y2="132" stroke="currentColor" marker-end="url(#lh-a)" />
-
   <rect x="280" y="104" width="120" height="56" rx="6" fill="none" style="stroke:var(--accent)" stroke-width="2" />
   <text x="340" y="128" text-anchor="middle" font-size="13" style="fill:var(--accent)">접촉</text>
   <text x="340" y="146" text-anchor="middle" font-size="11" style="fill:var(--accent)">Contact 제어</text>
-
   <line x1="380" y1="104" x2="430" y2="68" stroke="currentColor" marker-start="url(#lh-a)" marker-end="url(#lh-a)" />
   <text x="418" y="94" font-size="11" fill="currentColor" opacity="0.7">측정</text>
-
   <line x1="510" y1="64" x2="545" y2="104" stroke="currentColor" marker-end="url(#lh-a)" />
   <text x="546" y="82" font-size="11" fill="currentColor" opacity="0.7">등급</text>
-
   <rect x="530" y="108" width="120" height="48" rx="6" fill="none" stroke="currentColor" opacity="0.85" />
   <text x="590" y="137" text-anchor="middle" font-size="13" fill="currentColor">분류 배출</text>
-
   <line x1="195" y1="206" x2="195" y2="162" stroke="currentColor" marker-end="url(#lh-a)" />
   <line x1="340" y1="206" x2="340" y2="166" stroke="currentColor" marker-end="url(#lh-a)" />
-
   <rect x="150" y="212" width="250" height="48" rx="6" fill="none" stroke="currentColor" opacity="0.8" />
   <text x="275" y="241" text-anchor="middle" font-size="13" fill="currentColor">PC 기반 Motion · DIO 제어</text>
 </svg>

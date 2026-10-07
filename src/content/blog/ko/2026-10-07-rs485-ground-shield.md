@@ -72,49 +72,38 @@ draft: false
       <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" />
     </marker>
   </defs>
-
   <text x="20" y="28" font-size="13" fill="currentColor" opacity="0.7">작업 전</text>
-
   <rect x="20" y="44" width="130" height="88" rx="6" fill="none" stroke="currentColor" />
   <text x="85" y="72" text-anchor="middle" font-size="13" fill="currentColor">PC 변환기</text>
   <text x="85" y="94" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">A · B</text>
   <text x="85" y="118" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.6">GND ①</text>
-
   <line x1="150" y1="78" x2="380" y2="78" stroke="currentColor" />
   <line x1="150" y1="96" x2="380" y2="96" stroke="currentColor" />
   <text x="265" y="70" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">A · B 두 가닥, 실드 없음</text>
-
   <rect x="380" y="44" width="130" height="88" rx="6" fill="none" stroke="currentColor" />
   <text x="445" y="72" text-anchor="middle" font-size="13" fill="currentColor">브러쉬 드라이브</text>
   <text x="445" y="94" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">A · B</text>
   <text x="445" y="118" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.6">GND ②</text>
-
   <path d="M 540 60 q 10 -10 20 0 t 20 0 t 20 0 t 20 0" fill="none" stroke="currentColor" opacity="0.6" />
   <path d="M 540 78 q 10 -10 20 0 t 20 0 t 20 0 t 20 0" fill="none" stroke="currentColor" opacity="0.6" />
   <text x="580" y="104" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">모터 회전 시</text>
   <text x="580" y="120" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">스위칭 잡음</text>
-
   <text x="265" y="124" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">GND ① ≠ GND ②</text>
-
   <text x="20" y="176" font-size="13" style="fill:var(--accent)">작업 후</text>
-
   <rect x="20" y="192" width="130" height="88" rx="6" fill="none" stroke="currentColor" />
   <text x="85" y="220" text-anchor="middle" font-size="13" fill="currentColor">PC 변환기</text>
   <text x="85" y="242" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">A · B</text>
   <text x="85" y="266" text-anchor="middle" font-size="11" style="fill:var(--accent)">SG</text>
-
   <rect x="150" y="212" width="230" height="58" rx="10" fill="none" style="stroke:var(--accent)" stroke-width="2" stroke-dasharray="5 3" />
   <text x="265" y="206" text-anchor="middle" font-size="11" style="fill:var(--accent)">실드 케이블</text>
   <line x1="150" y1="226" x2="380" y2="226" stroke="currentColor" />
   <line x1="150" y1="244" x2="380" y2="244" stroke="currentColor" />
   <line x1="150" y1="262" x2="380" y2="262" style="stroke:var(--accent)" stroke-width="2" />
   <text x="265" y="256" text-anchor="middle" font-size="11" style="fill:var(--accent)">신호 GND 추가</text>
-
   <rect x="380" y="192" width="130" height="88" rx="6" fill="none" stroke="currentColor" />
   <text x="445" y="220" text-anchor="middle" font-size="13" fill="currentColor">브러쉬 드라이브</text>
   <text x="445" y="242" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">A · B</text>
   <text x="445" y="266" text-anchor="middle" font-size="11" style="fill:var(--accent)">SG</text>
-
   <text x="590" y="232" text-anchor="middle" font-size="13" style="fill:var(--accent)">유실</text>
   <text x="590" y="254" text-anchor="middle" font-size="13" style="fill:var(--accent)">16~21% → 0%</text>
 </svg>

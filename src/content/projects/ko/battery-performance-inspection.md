@@ -16,41 +16,30 @@ draft: false
       <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" />
     </marker>
   </defs>
-
   <rect x="30" y="16" width="110" height="48" rx="6" fill="none" stroke="currentColor" opacity="0.65" />
   <text x="85" y="37" text-anchor="middle" font-size="13" fill="currentColor">계측기 A</text>
   <text x="85" y="54" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.6">RS232</text>
-
   <rect x="160" y="16" width="110" height="48" rx="6" fill="none" stroke="currentColor" opacity="0.65" />
   <text x="215" y="37" text-anchor="middle" font-size="13" fill="currentColor">계측기 B</text>
   <text x="215" y="54" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.6">TCP/IP</text>
-
   <rect x="290" y="16" width="110" height="48" rx="6" fill="none" stroke="currentColor" opacity="0.65" />
   <text x="345" y="37" text-anchor="middle" font-size="13" fill="currentColor">계측기 C</text>
   <text x="345" y="54" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.6">RS232</text>
-
   <line x1="85" y1="64" x2="85" y2="92" stroke="currentColor" marker-end="url(#pf-a)" />
   <line x1="215" y1="64" x2="215" y2="92" stroke="currentColor" marker-end="url(#pf-a)" />
   <line x1="345" y1="64" x2="345" y2="92" stroke="currentColor" marker-end="url(#pf-a)" />
-
   <rect x="30" y="98" width="370" height="44" rx="6" fill="none" stroke="currentColor" opacity="0.9" />
   <text x="215" y="125" text-anchor="middle" font-size="13" fill="currentColor">계측기 인터페이스 계층</text>
-
   <line x1="215" y1="142" x2="215" y2="172" stroke="currentColor" marker-end="url(#pf-a)" />
-
   <rect x="30" y="178" width="370" height="52" rx="6" fill="none" stroke="currentColor" />
   <text x="215" y="209" text-anchor="middle" font-size="13" fill="currentColor">호스트 프로그램 — 판정</text>
-
   <line x1="400" y1="204" x2="462" y2="204" stroke="currentColor" marker-end="url(#pf-a)" />
   <text x="431" y="194" text-anchor="middle" font-size="12" fill="currentColor" opacity="0.7">기록</text>
-
   <rect x="470" y="178" width="180" height="52" rx="6" fill="none" style="stroke:var(--accent)" stroke-width="2" />
   <text x="560" y="199" text-anchor="middle" font-size="13" style="fill:var(--accent)">MariaDB</text>
   <text x="560" y="216" text-anchor="middle" font-size="11" style="fill:var(--accent)">원시 계측값 · 장비 상태</text>
-
   <line x1="560" y1="230" x2="560" y2="266" stroke="currentColor" marker-end="url(#pf-a)" />
   <text x="570" y="252" font-size="12" fill="currentColor" opacity="0.7">사후 추적</text>
-
   <rect x="470" y="272" width="180" height="44" rx="6" fill="none" stroke="currentColor" opacity="0.65" />
   <text x="560" y="299" text-anchor="middle" font-size="13" fill="currentColor">이력 조회 화면</text>
 </svg>

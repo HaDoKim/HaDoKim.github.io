@@ -20,32 +20,24 @@ LED 칩의 전기적·광학적 특성을 측정하는 측정기입니다. 측�
       <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" />
     </marker>
   </defs>
-
   <rect x="20" y="16" width="200" height="48" rx="6" fill="none" style="stroke:var(--accent)" stroke-width="2" />
   <text x="120" y="38" text-anchor="middle" font-size="13" style="fill:var(--accent)">측정 항목 설정</text>
   <text x="120" y="55" text-anchor="middle" font-size="11" style="fill:var(--accent)">사용자가 기종별로 정의</text>
-
   <line x1="120" y1="64" x2="120" y2="104" stroke="currentColor" marker-end="url(#lt-a)" />
   <text x="132" y="88" font-size="11" style="fill:var(--accent)">항목 정의</text>
-
   <rect x="20" y="110" width="200" height="44" rx="6" fill="none" stroke="currentColor" opacity="0.85" />
   <text x="120" y="137" text-anchor="middle" font-size="13" fill="currentColor">DC · AC 전기 측정</text>
-
   <rect x="20" y="170" width="200" height="44" rx="6" fill="none" stroke="currentColor" opacity="0.85" />
   <text x="120" y="197" text-anchor="middle" font-size="13" fill="currentColor">광학 측정</text>
-
   <line x1="220" y1="132" x2="286" y2="150" stroke="currentColor" marker-end="url(#lt-a)" />
   <line x1="220" y1="192" x2="286" y2="174" stroke="currentColor" marker-end="url(#lt-a)" />
-
   <rect x="290" y="128" width="150" height="68" rx="6" fill="none" stroke="currentColor" />
   <text x="365" y="159" text-anchor="middle" font-size="13" fill="currentColor">등급 판정</text>
   <text x="365" y="177" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">분류 기준 적용</text>
-
   <line x1="440" y1="148" x2="496" y2="126" stroke="currentColor" marker-end="url(#lt-a)" />
   <text x="470" y="112" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">등급 정보</text>
   <rect x="500" y="94" width="160" height="44" rx="6" fill="none" stroke="currentColor" opacity="0.65" />
   <text x="580" y="121" text-anchor="middle" font-size="13" fill="currentColor">분류 장비</text>
-
   <line x1="440" y1="176" x2="496" y2="198" stroke="currentColor" marker-end="url(#lt-a)" />
   <text x="470" y="214" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">측정 결과</text>
   <rect x="500" y="186" width="160" height="44" rx="6" fill="none" stroke="currentColor" opacity="0.65" />

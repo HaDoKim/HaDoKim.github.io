@@ -25,35 +25,28 @@ draft: false
       <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" />
     </marker>
   </defs>
-
   <rect x="20" y="110" width="150" height="70" rx="6" fill="none" stroke="currentColor" />
   <text x="95" y="139" text-anchor="middle" font-size="13" fill="currentColor">WPF 앱</text>
   <text x="95" y="157" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">운전 · 레시피 · 이력</text>
-
   <line x1="170" y1="145" x2="216" y2="145" stroke="currentColor" marker-end="url(#eb-a)" />
-
   <rect x="220" y="100" width="170" height="90" rx="6" fill="none" stroke="currentColor" opacity="0.9" />
   <text x="305" y="126" text-anchor="middle" font-size="13" fill="currentColor">세정 도메인</text>
   <text x="305" y="146" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">세정 사이클 · 레시피 검증</text>
   <text x="305" y="166" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">인터페이스만 의존</text>
-
   <line x1="390" y1="118" x2="446" y2="60" stroke="currentColor" marker-end="url(#eb-a)" />
   <text x="404" y="78" font-size="11" style="fill:var(--accent)">변수 기록 · 실행</text>
   <rect x="450" y="24" width="210" height="72" rx="6" fill="none" style="stroke:var(--accent)" stroke-width="2" />
   <text x="555" y="48" text-anchor="middle" font-size="13" style="fill:var(--accent)">로봇 컨트롤러</text>
   <text x="555" y="66" text-anchor="middle" font-size="11" style="fill:var(--accent)">궤적은 여기서 그린다</text>
   <text x="555" y="84" text-anchor="middle" font-size="11" style="fill:var(--accent)">지그재그 · 원 · 스파이럴</text>
-
   <line x1="390" y1="145" x2="446" y2="145" stroke="currentColor" marker-end="url(#eb-a)" />
   <rect x="450" y="122" width="210" height="46" rx="6" fill="none" stroke="currentColor" opacity="0.85" />
   <text x="555" y="142" text-anchor="middle" font-size="13" fill="currentColor">브러쉬 드라이브</text>
   <text x="555" y="159" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">BLDC · Modbus RTU</text>
-
   <line x1="390" y1="172" x2="446" y2="216" stroke="currentColor" marker-end="url(#eb-a)" />
   <rect x="450" y="194" width="210" height="46" rx="6" fill="none" stroke="currentColor" opacity="0.85" />
   <text x="555" y="214" text-anchor="middle" font-size="13" fill="currentColor">디지털 입출력</text>
   <text x="555" y="231" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.7">도어 · 센서 · EtherNet</text>
-
   <line x1="95" y1="256" x2="95" y2="186" stroke="currentColor" marker-end="url(#eb-a)" />
   <text x="106" y="226" font-size="11" fill="currentColor" opacity="0.7">이력 · 레시피</text>
   <rect x="20" y="262" width="150" height="44" rx="6" fill="none" stroke="currentColor" opacity="0.65" />

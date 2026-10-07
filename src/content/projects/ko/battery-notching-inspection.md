@@ -17,36 +17,26 @@ draft: false
       <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" />
     </marker>
   </defs>
-
   <rect x="30" y="20" width="110" height="44" rx="6" fill="none" stroke="currentColor" opacity="0.65" />
   <text x="85" y="47" text-anchor="middle" font-size="13" fill="currentColor">비전 1</text>
-
   <rect x="160" y="20" width="110" height="44" rx="6" fill="none" stroke="currentColor" opacity="0.65" />
   <text x="215" y="47" text-anchor="middle" font-size="13" fill="currentColor">비전 2</text>
-
   <rect x="290" y="20" width="110" height="44" rx="6" fill="none" stroke="currentColor" opacity="0.65" />
   <text x="345" y="47" text-anchor="middle" font-size="13" fill="currentColor">비전 3</text>
-
   <line x1="85" y1="64" x2="85" y2="124" stroke="currentColor" marker-end="url(#nk-a)" />
   <line x1="215" y1="64" x2="215" y2="124" stroke="currentColor" marker-end="url(#nk-a)" />
   <line x1="345" y1="64" x2="345" y2="124" stroke="currentColor" marker-end="url(#nk-a)" />
   <text x="360" y="100" font-size="12" fill="currentColor" opacity="0.7">검사 결과</text>
-
   <rect x="30" y="130" width="370" height="52" rx="6" fill="none" stroke="currentColor" />
   <text x="215" y="161" text-anchor="middle" font-size="13" fill="currentColor">호스트 프로그램 — 취합 · 판정</text>
-
   <line x1="400" y1="156" x2="462" y2="156" stroke="currentColor" marker-end="url(#nk-a)" />
   <text x="431" y="146" text-anchor="middle" font-size="12" fill="currentColor" opacity="0.7">JSON</text>
-
   <rect x="470" y="130" width="180" height="52" rx="6" fill="none" stroke="currentColor" opacity="0.65" />
   <text x="560" y="161" text-anchor="middle" font-size="13" fill="currentColor">SPC+</text>
-
   <line x1="215" y1="182" x2="215" y2="222" stroke="currentColor" marker-end="url(#nk-a)" />
   <text x="230" y="207" font-size="12" fill="currentColor" opacity="0.7">장비 신호</text>
-
   <rect x="30" y="228" width="370" height="48" rx="6" fill="none" style="stroke:var(--accent)" stroke-width="2" />
   <text x="215" y="257" text-anchor="middle" font-size="13" style="fill:var(--accent)">PLC 인터페이스 계층</text>
-
   <text x="85" y="298" text-anchor="middle" font-size="12" fill="currentColor" opacity="0.6">Mitsubishi</text>
   <text x="215" y="298" text-anchor="middle" font-size="12" fill="currentColor" opacity="0.6">OMRON</text>
   <text x="345" y="298" text-anchor="middle" font-size="12" fill="currentColor" opacity="0.6">SIEMENS</text>
