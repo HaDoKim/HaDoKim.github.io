@@ -15,7 +15,27 @@ const t = useTranslations(defaultLang);
 const { title, description = t('site.description'), image } = Astro.props;
 
 const siteName = t('site.title');
-const fullTitle = title === siteName ? siteName : `${title} · ${siteName}`;
+const isHome = Astro.url.pathname === '/';
+// 홈 제목은 검색 결과에 가장 크게 보이는 줄이라 이름과 직무를 함께 둔다.
+const fullTitle = isHome ? `${siteName} · ${t('site.role')}` : `${title} · ${siteName}`;
+
+// 홈에만 구조화 정보를 둔다 — 검색엔진이 사이트 주인과 직무를 알아보게 한다.
+const personLd = isHome
+  ? JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: siteName,
+      jobTitle: t('site.role'),
+      description,
+      url: new URL('/', Astro.site).href,
+      email: 'mailto:kims809@hotmail.com',
+      sameAs: ['https://github.com/HaDoKim'],
+      knowsAbout: [
+        '장비 제어', 'PLC', 'MES', 'Modbus', 'RS-485',
+        'C#', 'WPF', 'Visual C++', 'MFC', '산업용 로봇',
+      ],
+    })
+  : null;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = image ? new URL(image, Astro.site) : undefined;
 ---
@@ -36,6 +56,7 @@ const ogImage = image ? new URL(image, Astro.site) : undefined;
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    {personLd && <script is:inline type="application/ld+json" set:html={personLd} />}
     <meta name="google-site-verification" content="93mr8pmBaMIPltt0kmiyzpna5uJEuvkSOJxNASNdg98" />
     <meta name="naver-site-verification" content="06b258fe3082e2da8eb120aa2d5aa177ead1104e" />
 
