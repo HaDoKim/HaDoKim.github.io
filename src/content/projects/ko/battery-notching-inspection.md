@@ -3,7 +3,7 @@ title: "이차전지 노칭 검사 비전"
 description: "전극 노칭 공정에서 외관 불량과 치수를 검사하는 비전 시스템. PLC 3사 인터페이스와 상위 시스템 연동을 담당했습니다."
 date: 2023-11-01
 stack: ["Visual C++", "MFC", "PLC", "SPC+", "JSON"]
-order: 30
+order: 40
 featured: true
 draft: false
 ---
