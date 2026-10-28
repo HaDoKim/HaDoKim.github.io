@@ -3,6 +3,7 @@ title: "탭 버(Burr) 비전 검사 장비"
 description: "트레이에 담긴 탭 부품의 버를 비전으로 검사하고, 불량 트레이를 골라 따로 배출하는 장비. 시퀀스·화면·장비 통신을 포함한 제어 프로그램 전체를 개발했고, 출하되어 가동 중입니다."
 date: 2026-02-11
 stack: ["C#", ".NET Framework 4.7.2", "WPF", "MVVM", "AJINEXTEK AXL", "TCP/IP", "NLog"]
+order: 40
 featured: false
 draft: false
 ---

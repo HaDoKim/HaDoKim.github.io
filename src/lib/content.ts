@@ -89,3 +89,21 @@ export function tagSlug(tag: string): string {
     .replace(/-+/g, '-')
     .replace(/^-|-$/g, '');
 }
+
+/**
+ * 프로젝트 목록의 보이는 순서.
+ *
+ * 날짜만으로는 원하는 자리에 둘 수 없는 경우가 있어(예: 최근 작업이지만 특정 프로젝트 다음에 두고
+ * 싶을 때) frontmatter 의 order 로 직접 정할 수 있게 한다. order 가 있는 항목이 먼저 오름차순으로
+ * 오고, 없는 항목은 예전 규칙대로 featured 먼저, 같은 묶음 안에서는 최신순으로 그 뒤에 온다.
+ * 홈의 주요 프로젝트 선정에는 쓰지 않는다.
+ */
+export function orderProjects<T extends { data: { date: Date; featured: boolean; order?: number } }>(
+  entries: T[],
+): T[] {
+  const numbered = entries
+    .filter((e) => e.data.order !== undefined)
+    .sort((a, b) => (a.data.order as number) - (b.data.order as number));
+  const rest = entries.filter((e) => e.data.order === undefined).sort(byDateDesc);
+  return [...numbered, ...rest.filter((e) => e.data.featured), ...rest.filter((e) => !e.data.featured)];
+}

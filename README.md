@@ -34,6 +34,7 @@ draft: false
 
 프로젝트는 `src/content/projects/ko/slug.md` 에 같은 방식으로 쓴다.
 `featured: true` 를 주면 홈에 노출된다 (최신순 3개까지).
+프로젝트 목록의 순서는 `order: 숫자` 로 직접 정할 수 있다 (작을수록 앞, 10 단위로 매겨 둠). `order` 가 없는 프로젝트는 featured 먼저·최신순으로 그 뒤에 온다. 홈 노출에는 영향이 없다.
 
 ## 배포
 

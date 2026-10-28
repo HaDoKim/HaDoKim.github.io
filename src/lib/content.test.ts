@@ -3,6 +3,7 @@ import {
   byDateDesc,
   filterVisible,
   formatDate,
+  orderProjects,
   tagSlug,
   localeOf,
   slugOf,
@@ -142,5 +143,28 @@ describe('tagSlug', () => {
 
   it('앞뒤 공백과 연속 하이픈을 정리한다', () => {
     expect(tagSlug('  a  /  b  ')).toBe('a-b');
+  });
+});
+
+describe('orderProjects', () => {
+  const p = (name: string, date: string, featured: boolean, order?: number) => ({
+    name,
+    data: { date: new Date(date), featured, order },
+  });
+
+  it('순서 번호가 있는 항목을 번호 오름차순으로 먼저 둔다', () => {
+    const list = [p('a', '2020-01-01', false, 20), p('b', '2021-01-01', true), p('c', '2019-01-01', false, 10)];
+    expect(orderProjects(list).map((x) => x.name)).toEqual(['c', 'a', 'b']);
+  });
+
+  it('번호가 없는 항목은 featured 먼저, 같은 묶음 안에서는 최신순으로 뒤에 둔다', () => {
+    const list = [p('old-f', '2020-01-01', true), p('new', '2024-01-01', false), p('new-f', '2023-01-01', true)];
+    expect(orderProjects(list).map((x) => x.name)).toEqual(['new-f', 'old-f', 'new']);
+  });
+
+  it('원본 배열을 바꾸지 않는다', () => {
+    const list = [p('b', '2020-01-01', false), p('a', '2024-01-01', true)];
+    orderProjects(list);
+    expect(list.map((x) => x.name)).toEqual(['b', 'a']);
   });
 });

@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 import { defaultLang } from '../../i18n/ui';
 import { useTranslations } from '../../i18n/utils';
-import { byDateDesc, filterVisible, localeOf, slugOf } from '../../lib/content';
+import { filterVisible, localeOf, orderProjects, slugOf } from '../../lib/content';
 
 const t = useTranslations(defaultLang);
 
@@ -12,12 +12,9 @@ const all = await getCollection('projects');
 const projects = filterVisible(
   all.filter((entry) => localeOf(entry.id) === defaultLang),
   import.meta.env.DEV,
-).sort(byDateDesc);
+);
 
-const ordered = [
-  ...projects.filter((p) => p.data.featured),
-  ...projects.filter((p) => !p.data.featured),
-];
+const ordered = orderProjects(projects);
 ---
 
 <BaseLayout title={t('nav.projects')}>

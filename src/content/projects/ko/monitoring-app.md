@@ -3,6 +3,7 @@ title: "유압 실린더 내구성 평가 시스템"
 description: "챔버 온도를 제어하며 유압 실린더를 반복 구동해 내구성을 평가하는 설비의 제어·모니터링 소프트웨어. 설계부터 납품까지 단독 개발했고 현재 가동 중입니다."
 date: 2026-09-16
 stack: ["C#", ".NET 8", "WPF", "Modbus RTU", "FASTECH DIO", "xUnit"]
+order: 20
 featured: true
 draft: false
 ---

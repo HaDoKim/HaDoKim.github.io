@@ -26,6 +26,8 @@ const projects = defineCollection({
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
     cover: z.string().optional(),
+    // 프로젝트 목록에서 보이는 순서(작을수록 앞). 없으면 featured·최신순으로 그 뒤에 온다.
+    order: z.number().int().optional(),
   }),
 });
 

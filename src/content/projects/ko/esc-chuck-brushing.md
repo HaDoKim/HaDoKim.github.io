@@ -3,6 +3,7 @@ title: "로봇 ESC 척 브러쉬 세정 장비"
 description: "6축 로봇으로 반도체 ESC 척을 브러쉬 세정하는 장비의 제어 프로그램. 로봇·브러쉬 스핀들·DIO를 한 앱에서 제어하며, 출하되어 현장에서 가동 중입니다."
 date: 2026-09-20
 stack: ["C#", ".NET Framework 4.8", "WPF", "STEP Robot SDK", "Modbus RTU", "FASTECH DIO", "SQLite", "xUnit"]
+order: 10
 featured: true
 draft: false
 ---
