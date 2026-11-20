@@ -32,7 +32,10 @@ const t = useTranslations(defaultLang);
 
     <dl class="skills">
       <dt>언어</dt>
-      <dd>Visual C++ / MFC, C# / WPF</dd>
+      <dd>
+        Visual C++ / MFC, C# / WPF
+        <span class="note muted">두 언어 모두 장비 제어 프로그램 전체를 설계부터 출하까지 개발</span>
+      </dd>
 
       <dt>장비 제어</dt>
       <dd>Motion, DIO, 장비 시퀀스 설계, 운영 UI, 전장 설계</dd>
@@ -82,6 +85,11 @@ const t = useTranslations(defaultLang);
 
   .skills dd {
     margin: 0 0 0.75rem;
+  }
+
+  .skills .note {
+    display: block;
+    font-size: 0.9rem;
   }
 
   @media (min-width: 34rem) {
